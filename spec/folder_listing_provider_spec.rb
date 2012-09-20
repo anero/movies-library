@@ -3,9 +3,12 @@ require File.expand_path('../../lib/folder_listing_provider', __FILE__)
 
 describe MoviesLibrary::FolderListingProvider do
 	before(:all) do
+		# 'sleep' are necessary to have different creation dates as milliseconds are not stored
 		Dir.mkdir(get_absolute_path_to_temp_resource_folder(''))
 		Dir.mkdir(get_absolute_path_to_temp_resource_folder('dir_z'))
+		sleep 1
 		Dir.mkdir(get_absolute_path_to_temp_resource_folder('dir_x'))
+		sleep 1
 		Dir.mkdir(get_absolute_path_to_temp_resource_folder('dir_y'))
 	end
 
@@ -33,9 +36,9 @@ describe MoviesLibrary::FolderListingProvider do
 
 		folders = folder_listing_provider.get_folders(:order_by => :creation_date)
 
-		folders[0].name == 'dir_z'
-		folders[1].name == 'dir_x'
-		folders[1].name == 'dir_y'
+		folders[0].name.should eq 'dir_z'
+		folders[1].name.should eq 'dir_x'
+		folders[2].name.should eq 'dir_y'
 	end
 
 	it "should sort folders list by name" do
@@ -43,9 +46,9 @@ describe MoviesLibrary::FolderListingProvider do
 
 		folders = folder_listing_provider.get_folders(:order_by => :name)
 
-		folders[0].name == 'dir_x'
-		folders[1].name == 'dir_y'
-		folders[1].name == 'dir_z'
+		folders[0].name.should eq 'dir_x'
+		folders[1].name.should eq 'dir_y'
+		folders[2].name.should eq 'dir_z'
 	end
 
 	private

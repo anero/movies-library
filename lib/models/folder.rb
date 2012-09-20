@@ -5,6 +5,7 @@ module MoviesLibrary
 
 			def initialize(absolute_path)
 				@absolute_path = absolute_path
+				@creation_date = File.ctime absolute_path
 			end
 
 			def name

@@ -16,7 +16,7 @@ module MoviesLibrary
 			end
 
 			if (options[:order_by])
-				folders.sort_by {|f| f.send(options[:order_by]) unless !f.respond_to?(options[:order_by])}
+				folders = folders.sort_by {|f| f.send(options[:order_by]) unless !f.respond_to?(options[:order_by])}
 			end
 
 			folders
