@@ -1,6 +1,6 @@
 module MoviesLibrary
 	module Models
-		class Folder
+		class MovieFolder
 			attr_reader :absolute_path, :creation_date
 
 			def initialize(absolute_path)

@@ -1,7 +1,7 @@
-require File.expand_path('../models/folder', __FILE__)
+require File.expand_path('../models/movie_folder', __FILE__)
 
 module MoviesLibrary
-	class FolderListingProvider
+	class MovieFolderListingProvider
 		def initialize(folder_path)
 			@folder_path = folder_path
 		end
@@ -12,7 +12,7 @@ module MoviesLibrary
 			end
 
 			folders = folder_path.collect do |fp|
-				MoviesLibrary::Models::Folder.new(File.join(@folder_path, fp))
+				MoviesLibrary::Models::MovieFolder.new(File.join(@folder_path, fp))
 			end
 
 			if (options[:order_by])
