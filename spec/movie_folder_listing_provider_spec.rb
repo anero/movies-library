@@ -2,6 +2,8 @@ require 'spec_helper'
 require File.expand_path('../../lib/movie_folder_listing_provider', __FILE__)
 
 describe MoviesLibrary::MovieFolderListingProvider do
+	include MoviesLibrary::MovieFolderHelper
+
 	before(:all) do
 		# 'sleep' are necessary to have different creation dates as milliseconds are not stored
 		Dir.mkdir(get_absolute_path_to_temp_resource_folder(''))
@@ -50,9 +52,4 @@ describe MoviesLibrary::MovieFolderListingProvider do
 		folders[1].name.should eq 'dir_y'
 		folders[2].name.should eq 'dir_z'
 	end
-
-	private
-		def get_absolute_path_to_temp_resource_folder(folder_name='')
-			File.expand_path("../resources/#{folder_name}", __FILE__)
-		end
 end
