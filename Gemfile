@@ -1,4 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rspec'
-gem 'debugger'
+gem 'rake'
+group :development,:test do
+  gem 'rspec'
+  gem 'rack-test'
+	gem 'debugger'
+end
