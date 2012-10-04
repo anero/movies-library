@@ -31,3 +31,4 @@ DEPENDENCIES
   rack-test
   rake
   rspec
+  rspec-mocks
