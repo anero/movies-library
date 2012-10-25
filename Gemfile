@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rake'
 gem 'jekyll'
+gem 'mustache'
 
 group :development,:test do
   gem 'rspec'

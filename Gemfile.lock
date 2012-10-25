@@ -27,6 +27,7 @@ GEM
     liquid (2.4.1)
     maruku (0.6.1)
       syntax (>= 1.0.0)
+    mustache (0.99.4)
     posix-spawn (0.3.6)
     rack (1.4.1)
     rack-test (0.6.1)
@@ -48,6 +49,7 @@ PLATFORMS
 DEPENDENCIES
   debugger
   jekyll
+  mustache
   rack-test
   rake
   rspec
