@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rake'
+gem 'jekyll'
 
 group :development,:test do
   gem 'rspec'
