@@ -12,6 +12,8 @@ module MoviesLibrary
 		class MovieFolder
 			attr_reader :absolute_path, :creation_date
 
+			MOVIE_FILE_EXTENSIONS = 'avi|mp4'
+
 			def initialize(absolute_path)
 				@absolute_path = absolute_path
 				@creation_date = File.ctime(absolute_path).to_date
@@ -28,7 +30,7 @@ module MoviesLibrary
 					synopsis = File.open(synopsis_file_path, 'r').read
 				end
 				
-				subtitle_filename = Dir.entries(@absolute_path).first {|entry| entry =~ /.+?\.(zip|srt)/i }
+				subtitle_filename = Dir.entries(@absolute_path).find {|entry| entry =~ /.+?\.(zip|srt)/i }
 				if (subtitle_filename)
 					subtitles_file_path = File.join(@absolute_path, subtitle_filename)
 				end
@@ -37,8 +39,8 @@ module MoviesLibrary
 						:title => name, 
 						:synopsis => synopsis, 
 						:download_date => @creation_date, 
-						:has_subtitles => defined?(subtitles_file_path), 
-						:download_complete => Dir.entries(@absolute_path).any? {|entry| entry =~ /\.(avi|mp4)/i } })
+						:has_subtitles => !subtitles_file_path.nil? && !subtitles_file_path.empty?, 
+						:download_complete => Dir.entries(@absolute_path).any? {|entry| entry =~ /\.(#{MOVIE_FILE_EXTENSIONS})/i } })
 			end
 		end
 	end
