@@ -1,6 +1,7 @@
 require 'spec_helper'
 require File.expand_path('../../lib/models/movie', __FILE__)
 require File.expand_path('../../lib/movies_list_content_generator', __FILE__)
+require File.expand_path('../../_templates/index', __FILE__)
 
 describe MoviesLibrary::MoviesListContentGenerator do
 	it "should generate movies list from movie folder listing provider" do
@@ -20,11 +21,13 @@ describe MoviesLibrary::MoviesListContentGenerator do
 				:download_complete => true)),
 		]
 		movie_folder_listing_provider.should_receive(:get_folders).and_return(movie_folders)
-		# TODO: stub mustache class to generate content
+		index = double
+		index.should_receive(:movies=)
+		index.should_receive(:render).and_return('My rendered view')
+		Templates::Index.stub(:new).and_return(index)
 
 		movies_list_content_generator = MoviesLibrary::MoviesListContentGenerator.new(movie_folder_listing_provider)
+		
 		movies_list_content_generator.generate_movies_list_page
-
-		fail 'continue here'
 	end
 end

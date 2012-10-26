@@ -1,3 +1,5 @@
+require File.expand_path('../../_templates/index', __FILE__)
+
 module MoviesLibrary
 	class MoviesListContentGenerator
 		def initialize(movie_listing_provider)
@@ -5,7 +7,13 @@ module MoviesLibrary
 		end
 
 		def generate_movies_list_page
-			@movie_listing_provider.get_folders
+			movies = @movie_listing_provider.get_folders
+			
+			index = Templates::Index.new
+			index.movies = movies
+			index.render
+
+			# TODO: write generated view to _movies folder as index.html
 		end
 	end
 end

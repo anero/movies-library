@@ -1,0 +1,13 @@
+---
+layout: default
+title: Lista de Peliculas
+---
+
+<ul>
+{{#movies}}
+	<li>
+		<span class="title">{{title}}</span>
+		<p class="synopsis">{{synopsis}}</p>
+	</li>
+{{/movies}}
+</ul>
