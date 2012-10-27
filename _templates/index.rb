@@ -2,7 +2,7 @@ require 'mustache'
 
 module Templates
 	class Index < Mustache
-		self.path = File.dirname(__FILE__)
+		self.template_file = File.expand_path('../index.html.mustache', __FILE__)
 
 		attr_accessor :movies
 	end
