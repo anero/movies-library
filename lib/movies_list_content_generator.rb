@@ -7,13 +7,14 @@ module MoviesLibrary
 		end
 
 		def generate_movies_list_page
-			movies = @movie_listing_provider.get_folders
+			movie_folders = @movie_listing_provider.get_folders
 			
 			index = Templates::Index.new
-			index.movies = movies
-			index.render
+			index.movies = movie_folders.collect {|mf| mf.movie }
 
-			# TODO: write generated view to _movies folder as index.html
+			File.open(File.expand_path('../../_movies/index.html', __FILE__), 'w') do |f|
+				f.puts index.render
+			end
 		end
 	end
 end
