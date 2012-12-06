@@ -1,4 +1,7 @@
+
+
 require File.expand_path('../movie', __FILE__)
+require 'ruby-debug'
 
 module MoviesLibrary
 	module Models
@@ -12,7 +15,7 @@ module MoviesLibrary
 		class MovieFolder
 			attr_reader :absolute_path, :creation_date
 
-			MOVIE_FILE_EXTENSIONS = 'avi|mp4'
+			MOVIE_FILE_EXTENSIONS = 'avi|mp4|mkv'
 
 			def initialize(absolute_path)
 				@absolute_path = absolute_path
@@ -27,7 +30,7 @@ module MoviesLibrary
 				synopsis = ''
 				synopsis_file_path = File.join(@absolute_path, 'sinopsis.txt')
 				if (File.exists? synopsis_file_path)
-					synopsis = File.open(synopsis_file_path, 'r').read
+					synopsis = File.open(synopsis_file_path, 'r:WINDOWS-1252').read.encode('UTF-8', :invalid => :replace, :undef => :replace, :replace => '')
 				end
 				
 				subtitle_filename = Dir.entries(@absolute_path).find {|entry| entry =~ /.+?\.(zip|srt)/i }
