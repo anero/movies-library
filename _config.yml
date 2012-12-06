@@ -1,1 +1,3 @@
-source: _movies
+exclude: [ lib, spec, Gemfile, Gemfile.lock, movies-library.sublime-project, movies-library.sublime-workspace, Rakefile, README.md ]
+sitename:  Peliculas
+auto: false
