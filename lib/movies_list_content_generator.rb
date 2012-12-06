@@ -11,8 +11,7 @@ module MoviesLibrary
 			
 			index = Templates::Index.new
 			index.movies = movie_folders.collect {|mf| mf.movie }
-
-			File.open(File.expand_path('../../_movies/index.html', __FILE__), 'w') do |f|
+			File.open(File.expand_path('../../movies/index.html', __FILE__), 'w') do |f|
 				f.puts index.render
 			end
 		end
