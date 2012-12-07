@@ -2,12 +2,26 @@
 layout: default
 title: Lista de Peliculas
 ---
-
-<ul>
-{{#movies}}
-	<li>
-		<span class="title">{{title}}</span>
-		<p class="synopsis">{{synopsis}}</p>
-	</li>
-{{/movies}}
-</ul>
+<table id="movies">
+	<thead>
+		<tr>
+			<th>Pelicula</th>
+			<th>Fecha de adición</th>
+			<th>Download completo</th>
+			<th>Subtitulos</th>
+		</tr>
+	</thead>
+	<tbody>
+	{{#movies}}
+		<tr>
+			<td>
+				<span class="title">{{title}}</span>
+				<p class="synopsis">{{{synopsis}}}</p>
+			</td>
+			<td>{{download_date}}</td>
+			<td>{{download_complete}}</td>
+			<td>{{has_subtitles}}</td>
+		</tr>
+	{{/movies}}
+	</tbody>
+</table>

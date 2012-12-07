@@ -1,4 +1,4 @@
 *.sublime-project
 *.sublime-workspace
 _site
-_movies
+movies
