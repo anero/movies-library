@@ -9,4 +9,5 @@ group :development,:test do
   gem 'rspec-mocks'
   gem 'rack-test'
 	gem 'debugger'
+	gem 'pry'
 end
